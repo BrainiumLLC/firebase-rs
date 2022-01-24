@@ -1,0 +1,11 @@
+target
+
+# ignore libs we don't need
+firebase_cpp_sdk/libs/darwin
+firebase_cpp_sdk/libs/linux
+firebase_cpp_sdk/libs/tvos
+firebase_cpp_sdk/libs/windows
+# ios gets linked by pods
+firebase_cpp_sdk/libs/ios
+# we only need the c++ android libs
+firebase_cpp_sdk/libs/android/*/gnustl
