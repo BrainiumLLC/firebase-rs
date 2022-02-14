@@ -1,0 +1,1 @@
+"Auto-generated Firebase bindings for Rust"
