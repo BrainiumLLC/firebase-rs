@@ -2,7 +2,7 @@ use crate::util::convert_to_c_string;
 use firebase_sys::*;
 use std::ffi::CString;
 
-#[derive(Debug, Clone)]
+#[derive(Clone, Debug, Deserialize)]
 pub enum Variant {
     I64(i64),
     F64(f64),

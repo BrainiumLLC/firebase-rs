@@ -102,4 +102,5 @@ extern "C" fn call_closure<F: FnMut(*const firebase_FutureBase)>(
     let callback_ptr = data as *mut F;
     let callback = unsafe { &mut *callback_ptr };
     callback(result);
+    unsafe { Box::from_raw(callback_ptr) };
 }
