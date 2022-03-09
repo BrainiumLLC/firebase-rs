@@ -1,5 +1,6 @@
 use crate::util::convert_to_c_string;
 use firebase_sys::*;
+use serde::Deserialize;
 use std::ffi::CString;
 
 #[derive(Clone, Debug, Deserialize)]
