@@ -227,3 +227,9 @@ impl RemoteConfig {
         }
     }
 }
+
+impl std::fmt::Debug for RemoteConfig {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("RemoteConfig").finish()
+    }
+}
