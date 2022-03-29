@@ -3,8 +3,6 @@
 
 #include <iostream>
 #include <stdlib.h>
-// TODO: Remove this later after testing
-#include <signal.h>
 
 const char *LinkingTest(const firebase::FutureBase &base)
 {
@@ -26,8 +24,3 @@ void FutureOnCompletion(const firebase::Future<void> &future, firebase::Future<v
     future.OnCompletion(callback, user_data);
 }
 
-// TODO: Remove this later after testing
-void force_crash()
-{
-    raise(SIGSEGV);
-}

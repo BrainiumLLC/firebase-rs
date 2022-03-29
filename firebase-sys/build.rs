@@ -97,7 +97,7 @@ fn main() {
     };
 
     let bindings = builder
-        .header("src/wrapper.h")
+        .header("src/crasher.h")
         .allowlist_function("force_crash")
         .opaque_type("std::.*")
         .allowlist_type("firebase::App")
@@ -117,6 +117,7 @@ fn build_wrapper() {
         .cpp(true)
         .flag("-std=c++11")
         .file("src/wrapper.cpp")
+        .file("src/crasher.cpp")
         .include("firebase_cpp_sdk/include/")
         .compile("native");
 }
