@@ -32,3 +32,11 @@ pub enum Error {
     #[error("failed to convert integer into C integer type")]
     IntegerConversionError,
 }
+
+// TODO: Remove this later after testing
+/// # Safety
+///
+/// This function is unsafe. Spooky!
+pub unsafe fn force_crash() {
+    firebase_sys::force_crash();
+}

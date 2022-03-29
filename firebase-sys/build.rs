@@ -71,9 +71,6 @@ fn main() {
     #[cfg(feature = "remote_config")]
     let builder = {
         builder
-            .header("src/wrapper.h")
-            .allowlist_function("get_string")
-            .allowlist_function("LinkingTest")
             .header("firebase_cpp_sdk/include/firebase/remote_config.h")
             .allowlist_type("firebase::remote_config::RemoteConfig")
             .allowlist_function("firebase::remote_config::SetDefaults")
@@ -97,6 +94,10 @@ fn main() {
     };
 
     let bindings = builder
+        .header("src/wrapper.h")
+        .allowlist_function("get_string")
+        .allowlist_function("LinkingTest")
+        .allowlist_function("force_crash")
         .opaque_type("std::.*")
         .allowlist_type("firebase::App")
         .allowlist_type("firebase::AppOptions")
