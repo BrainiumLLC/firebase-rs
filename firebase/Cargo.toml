@@ -7,7 +7,7 @@ edition = "2018"
 firebase-sys = { path = "../firebase-sys"}
 thiserror = "1.0.29"
 log = "0.4.14"
-serde = "1"
+serde = { version = "1", features = ["derive"] }
 
 [target.'cfg(target_os = "android")'.dependencies]
 ndk = "0.3.0"

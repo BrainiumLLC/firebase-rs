@@ -7,6 +7,7 @@
 const char *LinkingTest(const firebase::FutureBase &base)
 {
     base.error();
+    base.OnCompletion(nullptr, nullptr);
     return base.error_message();
 }
 
@@ -23,4 +24,3 @@ void FutureOnCompletion(const firebase::Future<void> &future, firebase::Future<v
 {
     future.OnCompletion(callback, user_data);
 }
-
