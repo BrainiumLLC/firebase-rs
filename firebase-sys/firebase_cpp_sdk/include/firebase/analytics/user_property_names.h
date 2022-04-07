@@ -26,11 +26,6 @@ namespace analytics {
 /// @{
 
 
-/// The method used to sign in. For example, "google", "facebook" or
-/// "twitter".
-static const char*const kUserPropertySignUpMethod
-     = "sign_up_method";
-
 /// Indicates whether events logged by Google Analytics can be used to
 /// personalize ads for the user. Set to "YES" to enable, or "NO" to
 /// disable. Default is enabled. See the
@@ -43,6 +38,11 @@ static const char*const kUserPropertySignUpMethod
 /// @endcode
 static const char*const kUserPropertyAllowAdPersonalizationSignals
      = "allow_personalized_ads";
+
+/// The method used to sign in. For example, "google", "facebook" or
+/// "twitter".
+static const char*const kUserPropertySignUpMethod
+     = "sign_up_method";
 /// @}
 
 }  // namespace analytics
