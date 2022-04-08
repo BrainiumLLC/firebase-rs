@@ -94,6 +94,10 @@ fn main() {
             .allowlist_function("firebase::remote_config::RemoteConfig::GetDouble")
             .allowlist_function("firebase::remote_config::RemoteConfig::GetLong")
             .allowlist_function("firebase::remote_config::RemoteConfig::GetString")
+            .allowlist_type("firebase::FutureBase")
+            .allowlist_function("firebase::FutureBase::OnCompletion")
+            .allowlist_function("firebase::FutureBase::error_message")
+            .allowlist_function("firebase::FutureBase::error")
     };
 
     let bindings = builder
