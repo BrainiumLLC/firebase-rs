@@ -123,6 +123,5 @@ fn build_wrapper() {
         .file("src/wrapper.cpp")
         .file("src/crasher.cpp")
         .include("firebase_cpp_sdk/include/")
-        .compile("firebasewrapper");
-    println!("cargo:rustc-link-lib=static=firebasewrapper");
+        .compile("native");
 }

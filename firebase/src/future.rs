@@ -104,3 +104,7 @@ extern "C" fn call_closure<F: FnMut(*const firebase_FutureBase)>(
     callback(result);
     unsafe { Box::from_raw(callback_ptr) };
 }
+
+unsafe fn linking_test(base: *const firebase_FutureBase) {
+    firebase_sys::LinkingTest(base);
+}
