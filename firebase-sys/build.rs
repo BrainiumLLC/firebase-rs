@@ -94,6 +94,7 @@ fn main() {
             .allowlist_function("firebase::remote_config::RemoteConfig::GetDouble")
             .allowlist_function("firebase::remote_config::RemoteConfig::GetLong")
             .allowlist_function("firebase::remote_config::RemoteConfig::GetString")
+            .header("firebase_cpp_sdk/include/firebase/future.h")
             .allowlist_type("firebase::FutureBase")
             .allowlist_function("firebase::FutureBase::OnCompletion")
             .allowlist_function("firebase::FutureBase::error_message")
