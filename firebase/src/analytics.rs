@@ -95,7 +95,6 @@ pub struct Parameter {
 }
 
 impl Parameter {
-    // THis error is really annoying usability-wise
     pub fn new(name: &str, variant: Variant) -> Self {
         Self {
             name: convert_to_c_string(name),

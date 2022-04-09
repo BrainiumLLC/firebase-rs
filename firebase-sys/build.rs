@@ -73,32 +73,19 @@ fn main() {
         builder
             .header("src/wrapper.h")
             .allowlist_function("get_string")
-            .allowlist_function("LinkingTest")
             .header("firebase_cpp_sdk/include/firebase/remote_config.h")
             .allowlist_type("firebase::remote_config::RemoteConfig")
             .allowlist_function("firebase::remote_config::SetDefaults")
-            .allowlist_function("firebase::remote_config::SetDefaultsLastResult")
             .allowlist_function("firebase::remote_config::RemoteConfig::Fetch")
-            .allowlist_function("firebase::remote_config::RemoteConfig::FetchLastResult")
             .allowlist_function("firebase::remote_config::RemoteConfig::Activate")
-            .allowlist_function("firebase::remote_config::RemoteConfig::ActivateLastResult")
             .allowlist_function("firebase::remote_config::RemoteConfig::FetchAndActivate")
-            .allowlist_function("firebase::remote_config::RemoteConfig::FetchAndActivateLastResult")
             .allowlist_function("firebase::remote_config::RemoteConfig::GetInstance")
             .allowlist_function("firebase::remote_config::RemoteConfig::EnsureInitialized")
-            .allowlist_function(
-                "firebase::remote_config::RemoteConfig::EnsureInitializedLastResult",
-            )
             .allowlist_function("firebase::remote_config::RemoteConfig::GetBoolean")
             .allowlist_function("firebase::remote_config::RemoteConfig::GetData")
             .allowlist_function("firebase::remote_config::RemoteConfig::GetDouble")
             .allowlist_function("firebase::remote_config::RemoteConfig::GetLong")
             .allowlist_function("firebase::remote_config::RemoteConfig::GetString")
-            .header("firebase_cpp_sdk/include/firebase/future.h")
-            .allowlist_type("firebase::FutureBase")
-            .allowlist_function("firebase::FutureBase::OnCompletion")
-            .allowlist_function("firebase::FutureBase::error_message")
-            .allowlist_function("firebase::FutureBase::error")
     };
 
     let bindings = builder

@@ -1,21 +1,6 @@
 use firebase_sys::*;
 use std::os::raw::c_void;
 
-#[derive(Debug, Copy, Clone)]
-pub struct FutureError {
-    status: i32,
-}
-
-#[derive(Debug, Copy, Clone)]
-pub struct FutureOk {
-    status: i32,
-}
-
-pub enum FirebaseErrorStatus {
-    Error(FutureError),
-    Ok(FutureOk),
-}
-
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct FutureReceipt {
     status: firebase_FutureStatus,
@@ -103,8 +88,4 @@ extern "C" fn call_closure<F: FnMut(*const firebase_FutureBase)>(
     let callback = unsafe { &mut *callback_ptr };
     callback(result);
     unsafe { Box::from_raw(callback_ptr) };
-}
-
-unsafe fn linking_test(base: *const firebase_FutureBase) {
-    firebase_sys::LinkingTest(base);
 }

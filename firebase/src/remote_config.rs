@@ -18,7 +18,7 @@ impl ConfigKeyValueVariant {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub enum LastFetchStatus {
     Success,
     Failure,
@@ -37,7 +37,7 @@ impl LastFetchStatus {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub enum FetchFailureReason {
     Invalid,
     Throttled,
@@ -75,6 +75,22 @@ impl ConfigInfo {
             throttled_end_time: value.throttled_end_time,
         }
     }
+
+    pub fn fetch_time(&self) -> u64 {
+        self.fetch_time
+    }
+
+    pub fn last_fecth_status(&self) -> LastFetchStatus {
+        self.last_fecth_status
+    }
+
+    pub fn failure_reason(&self) -> FetchFailureReason {
+        self.failure_reason
+    }
+
+    pub fn throttled_end_time(&self) -> u64 {
+        self.throttled_end_time
+    }
 }
 
 #[derive(Debug)]
@@ -84,13 +100,22 @@ pub struct ConfigSettings {
 }
 
 impl ConfigSettings {
-    pub fn from_internal_type(settings: firebase_remote_config_ConfigSettings) -> Self {
+    fn from_internal_type(settings: firebase_remote_config_ConfigSettings) -> Self {
         Self {
             fetch_timeout_in_milliseconds: settings.fetch_timeout_in_milliseconds,
             minimum_fetch_interval_in_milliseconds: settings.minimum_fetch_interval_in_milliseconds,
         }
     }
+
+    pub fn fetch_timeout_in_milliseconds(&self) -> u64 {
+        self.fetch_timeout_in_milliseconds
+    }
+
+    pub fn minimum_fetch_interval_in_milliseconds(&self) -> u64 {
+        self.minimum_fetch_interval_in_milliseconds
+    }
 }
+
 pub struct RemoteConfig {
     raw: *mut firebase_remote_config_RemoteConfig,
 }
