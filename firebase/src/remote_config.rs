@@ -251,6 +251,12 @@ impl RemoteConfig {
                 .into_owned()
         }
     }
+
+    fn hidden_linking_test(&self) {
+        unsafe {
+            let c_ptr = linking_test(self.raw);
+        }
+    }
 }
 
 impl std::fmt::Debug for RemoteConfig {

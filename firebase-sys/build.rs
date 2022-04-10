@@ -39,7 +39,7 @@ fn main() {
     println!("cargo:rerun-if-changed=src/wrapper.cpp");
     println!("cargo:rerun-if-changed=src/lib.rs");
 
-    build_wrapper();
+    build_crasher();
 
     let target_os = ffi_helpers::TargetOs::detect().expect("Unsupported platform");
     let android_args = match target_os {
@@ -70,9 +70,11 @@ fn main() {
 
     #[cfg(feature = "remote_config")]
     let builder = {
+        build_wrapper();
         builder
             .header("src/wrapper.h")
             .allowlist_function("get_string")
+            .allowlist_function("linking_test")
             .header("firebase_cpp_sdk/include/firebase/remote_config.h")
             .allowlist_type("firebase::remote_config::RemoteConfig")
             .allowlist_function("firebase::remote_config::SetDefaults")
@@ -104,12 +106,21 @@ fn main() {
         .expect("Couldn't write bindings!");
 }
 
+fn build_crasher() {
+    cc::Build::new()
+        .cpp(true)
+        .flag("-std=c++11")
+        .file("src/crasher.cpp")
+        .compile("firebasefficrasher");
+    println!("cargo:rustc-link-lib=static=firebasefficrasher");
+}
+
 fn build_wrapper() {
     cc::Build::new()
         .cpp(true)
         .flag("-std=c++11")
         .file("src/wrapper.cpp")
-        .file("src/crasher.cpp")
         .include("firebase_cpp_sdk/include/")
-        .compile("native");
+        .compile("firebaseffiwrapper");
+    println!("cargo:rustc-link-lib=static=firebaseffiwrapper");
 }
