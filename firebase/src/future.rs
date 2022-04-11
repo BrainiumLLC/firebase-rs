@@ -44,7 +44,7 @@ impl Future {
     ) {
         let data = Box::into_raw(Box::new(callback));
         unsafe {
-            firebase_FutureBase_OnCompletion(
+            future_base_on_completion(
                 &self.raw._base as *const _,
                 Some(call_closure::<F>),
                 data as *mut _,
@@ -61,7 +61,7 @@ impl Future {
         mut on_error: F2,
     ) {
         self.on_completion(move |raw_future| {
-            let error_status = unsafe { firebase_FutureBase_error(raw_future) };
+            let error_status = unsafe { future_base_error(raw_future) };
             if error_status == 0 {
                 on_success();
             } else {
@@ -73,7 +73,7 @@ impl Future {
 
     pub(crate) fn error_message(raw_base: *const firebase_FutureBase) -> String {
         unsafe {
-            std::ffi::CStr::from_ptr(firebase_FutureBase_error_message(raw_base))
+            std::ffi::CStr::from_ptr(future_base_error_message(raw_base))
                 .to_string_lossy()
                 .into_owned()
         }

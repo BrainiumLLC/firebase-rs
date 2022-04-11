@@ -24,3 +24,18 @@ void linking_test(firebase::remote_config::RemoteConfig &remote_config)
     std::cout << error << " " << error_message << std::endl;
     fetch.OnCompletion(nullptr, nullptr);
 }
+
+int future_base_error(const firebase::FutureBase &future_base)
+{
+    return future_base.error();
+}
+
+const char *future_base_error_message(const firebase::FutureBase &future_base)
+{
+    return future_base.error_message();
+}
+
+void future_base_on_completion(const firebase::FutureBase &future_base, firebase::FutureBase::CompletionCallback callback, void *user_data)
+{
+    return future_base.OnCompletion(callback, user_data);
+}
