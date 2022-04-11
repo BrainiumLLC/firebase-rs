@@ -31,12 +31,3 @@ void future_base_on_completion(const firebase::FutureBase &future_base, firebase
 {
     return future_base.OnCompletion(callback, user_data);
 }
-
-LinkingTest::LinkingTest()
-{
-}
-
-void LinkingTest::foo() const
-{
-    std::cout << "Linking test" << std::endl;
-}

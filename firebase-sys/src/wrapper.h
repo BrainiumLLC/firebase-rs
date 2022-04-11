@@ -8,13 +8,9 @@
 char *get_string(firebase::remote_config::RemoteConfig &remote_config, const char *key);
 void free_string(char *str);
 
+// NOTE: These exist because calling the functions directly was causing a linker error
 int future_base_error(const firebase::FutureBase &future_base);
 const char *future_base_error_message(const firebase::FutureBase &future_base);
 void future_base_on_completion(const firebase::FutureBase &future_base, firebase::FutureBase::CompletionCallback callback, void *user_data);
 
-struct LinkingTest
-{
-    LinkingTest();
-    void foo() const;
-};
 #endif

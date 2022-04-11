@@ -260,23 +260,3 @@ impl std::fmt::Debug for RemoteConfig {
         f.debug_struct("RemoteConfig").finish()
     }
 }
-
-pub struct Test {
-    inner: LinkingTest,
-}
-
-impl Test {
-    pub fn new() -> Self {
-        unsafe {
-            Self {
-                inner: LinkingTest::new(),
-            }
-        }
-    }
-
-    pub fn test(&self) {
-        unsafe {
-            self.inner.foo();
-        }
-    }
-}

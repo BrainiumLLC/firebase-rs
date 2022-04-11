@@ -78,8 +78,6 @@ fn main() {
             .allowlist_function("future_base_error")
             .allowlist_function("future_base_error_message")
             .allowlist_function("future_base_on_completion")
-            .allowlist_type("LinkingTest")
-            .allowlist_function("LinkingTest::foo")
             .header("firebase_cpp_sdk/include/firebase/remote_config.h")
             .allowlist_type("firebase::remote_config::RemoteConfig")
             .allowlist_function("firebase::remote_config::SetDefaults")
