@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2018"
 
 [build-dependencies]
-bindgen = "0.59.1"
+bindgen = "0.59"
 bossy = "0.2.1"
 cc = "1"
 ffi-helpers = { git = "https://github.com/BrainiumLLC/ffi-helpers" }

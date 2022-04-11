@@ -252,7 +252,8 @@ impl RemoteConfig {
         }
     }
 
-    fn hidden_linking_test(&self) {
+    #[doc(hidden)]
+    pub fn hidden_linking_test(&self) {
         unsafe {
             let c_ptr = linking_test(self.raw);
         }
