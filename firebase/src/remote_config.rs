@@ -253,17 +253,30 @@ impl RemoteConfig {
             ret
         }
     }
-
-    #[doc(hidden)]
-    pub fn hidden_linking_test(&self) {
-        unsafe {
-            let c_ptr = linking_test(self.raw);
-        }
-    }
 }
 
 impl std::fmt::Debug for RemoteConfig {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.debug_struct("RemoteConfig").finish()
+    }
+}
+
+pub struct Test {
+    inner: LinkingTest,
+}
+
+impl Test {
+    pub fn new() -> Self {
+        unsafe {
+            Self {
+                inner: LinkingTest::new(),
+            }
+        }
+    }
+
+    pub fn test(&self) {
+        unsafe {
+            self.inner.foo();
+        }
     }
 }
