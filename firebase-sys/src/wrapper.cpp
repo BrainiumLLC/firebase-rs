@@ -11,6 +11,11 @@ char *get_string(firebase::remote_config::RemoteConfig &remote_config, const cha
     return cstr;
 }
 
+void free_string(char *str)
+{
+    delete[] str;
+}
+
 void linking_test(firebase::remote_config::RemoteConfig &remote_config)
 {
     auto fetch = remote_config.Fetch();

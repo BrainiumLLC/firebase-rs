@@ -74,6 +74,7 @@ fn main() {
         builder
             .header("src/wrapper.h")
             .allowlist_function("get_string")
+            .allowlist_function("free_string")
             .allowlist_function("linking_test")
             .header("firebase_cpp_sdk/include/firebase/remote_config.h")
             .allowlist_type("firebase::remote_config::RemoteConfig")

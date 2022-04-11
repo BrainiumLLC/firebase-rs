@@ -246,9 +246,11 @@ impl RemoteConfig {
         let key = CString::new(key).expect("could not convert key to C string");
         unsafe {
             let c_ptr = get_string(self.raw, key.as_ptr());
-            std::ffi::CStr::from_ptr(c_ptr)
+            let ret = std::ffi::CStr::from_ptr(c_ptr)
                 .to_string_lossy()
-                .into_owned()
+                .into_owned();
+            free_string(c_ptr);
+            ret
         }
     }
 
