@@ -1,6 +1,8 @@
 #[cfg(feature = "analytics")]
 pub mod analytics;
 pub mod app;
+#[cfg(target_os = "ios")]
+mod ffi;
 #[cfg(feature = "remote_config")]
 pub mod future;
 #[cfg(feature = "remote_config")]
@@ -23,6 +25,19 @@ pub unsafe fn configure() {
         let cls = class!(FIRApp);
         let _: *const () = msg_send![cls, configure];
     }
+}
+
+pub fn log(message: &str) {
+    #[cfg(target_os = "ios")]
+    {
+        use objc::{class, msg_send, runtime::Object, sel, sel_impl};
+        unsafe {
+            let crashlytics: *mut Object = msg_send![class!(FIRCrashlytics), crashlytics];
+            let ns_message = ffi::NSStringRust::from_str(message);
+            let _: *const () = msg_send![crashlytics, log: ns_message];
+        }
+    }
+    // TODO: Other platforms/Android
 }
 
 #[derive(Debug, Error)]
