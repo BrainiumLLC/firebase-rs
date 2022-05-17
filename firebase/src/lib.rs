@@ -30,12 +30,12 @@ pub unsafe fn configure() {
 pub fn log(message: &str) {
     #[cfg(target_os = "ios")]
     {
-        use objc::{class, msg_send, runtime::Object, sel, sel_impl};
-        unsafe {
+        use objc::{class, msg_send, rc::autoreleasepool, runtime::Object, sel, sel_impl};
+        autoreleasepool(|| unsafe {
             let crashlytics: *mut Object = msg_send![class!(FIRCrashlytics), crashlytics];
             let ns_message = ffi::NSStringRust::from_str(message);
             let _: *const () = msg_send![crashlytics, log: ns_message];
-        }
+        });
     }
     // TODO: Other platforms/Android
 }
