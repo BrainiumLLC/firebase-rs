@@ -9,7 +9,9 @@ pub struct NSStringRust(ObjcId);
 impl NSStringRust {
     pub fn from_str(string: &str) -> Self {
         unsafe {
-            let object: ObjcId = msg_send![class!(NSString), stringWithUTF8String: CString::new(string).unwrap_or_default().into_raw()];
+            let object: ObjcId = msg_send![class!(NSString), stringWithUTF8String: CString::new(string).unwrap_or_else(|_| CString::new(
+                "NSString error: Trying to create a CString from a string with embedded nuls"
+            ).unwrap()).into_raw()];
             Self(object)
         }
     }
