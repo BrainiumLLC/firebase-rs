@@ -20,6 +20,7 @@ impl App {
     /// This function is unsafe. Spooky!
     #[cfg(not(target_os = "android"))]
     pub unsafe fn create() -> Self {
+        log::info!("create firebase app");
         #[cfg(target_os = "ios")]
         {
             Self {
@@ -40,6 +41,7 @@ impl App {
         activity: &'static ndk::native_activity::NativeActivity,
         jni_env: *mut jni::sys::JNIEnv,
     ) -> Self {
+        log::info!("create firebase app");
         Self {
             raw: firebase_sys::firebase_App_Create(jni_env as _, activity.activity() as _),
         }

@@ -20,6 +20,7 @@ use thiserror::Error;
 pub unsafe fn configure() {
     #[cfg(target_os = "ios")]
     {
+        log::info!("Configure Firebase");
         use objc::{class, msg_send, sel, sel_impl};
 
         let cls = class!(FIRApp);
