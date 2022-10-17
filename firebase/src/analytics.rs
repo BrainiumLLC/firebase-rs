@@ -90,8 +90,8 @@ pub fn log_event(event_name: &str) {
 
 #[repr(C)]
 pub struct Parameter {
-    name: CString,
-    variant: Variant,
+    pub name: CString,
+    pub variant: Variant,
 }
 
 impl Parameter {
