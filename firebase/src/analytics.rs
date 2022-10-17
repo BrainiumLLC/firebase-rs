@@ -102,11 +102,11 @@ impl Parameter {
         }
     }
 
-    fn name(&self) -> &CString {
+    pub fn name(&self) -> &CString {
         &self.name
     }
 
-    fn variant(&self) -> &Variant {
+    pub fn variant(&self) -> &Variant {
         &self.variant
     }
 }
